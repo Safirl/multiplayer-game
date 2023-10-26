@@ -1,4 +1,5 @@
 //fait appel au package espress qui permet de faire tourner le site
+const { log } = require('console');
 const express = require('express')
 const app = express()
 
@@ -75,6 +76,8 @@ io.on('connection', (socket) => {
   })
   
   socket.on('keydown', ({ key, sequenceNumber }) => {
+    console.log(sequenceNumber);
+    if (!sequenceNumber) {return; }     
     backEndPlayers[socket.id].sequenceNumber = sequenceNumber
     switch (key) {
       case "z":
@@ -92,7 +95,7 @@ io.on('connection', (socket) => {
       case "d":
         backEndPlayers[socket.id].x += SPEED;  
         break;
-    }
+  }
   })
 });
 
