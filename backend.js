@@ -76,8 +76,8 @@ io.on('connection', (socket) => {
   })
   
   socket.on('keydown', ({ key, sequenceNumber }) => {
-    if (backEndPlayers[socket.id].sequenceNumber) { 
-      console.log(sequenceNumber);    
+    if (backEndPlayers[socket.id]){   
+      console.log(backEndPlayers[socket.id].sequenceNumber);
       backEndPlayers[socket.id].sequenceNumber = sequenceNumber
       switch (key) {
         case "z":
