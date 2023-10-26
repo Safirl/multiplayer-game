@@ -76,25 +76,26 @@ io.on('connection', (socket) => {
   })
   
   socket.on('keydown', ({ key, sequenceNumber }) => {
-    console.log(sequenceNumber);
-    if (!sequenceNumber) {return; }     
-    backEndPlayers[socket.id].sequenceNumber = sequenceNumber
-    switch (key) {
-      case "z":
-        backEndPlayers[socket.id].y -= SPEED;
-        break;
-        
-      case "q":
-        backEndPlayers[socket.id].x -= SPEED;
-        break;
+    if (sequenceNumber) { 
+      console.log(sequenceNumber);    
+      backEndPlayers[socket.id].sequenceNumber = sequenceNumber
+      switch (key) {
+        case "z":
+          backEndPlayers[socket.id].y -= SPEED;
+          break;
           
-      case "s":
-        backEndPlayers[socket.id].y += SPEED;
-        break;
+        case "q":
+          backEndPlayers[socket.id].x -= SPEED;
+          break;
             
-      case "d":
-        backEndPlayers[socket.id].x += SPEED;  
-        break;
+        case "s":
+          backEndPlayers[socket.id].y += SPEED;
+          break;
+              
+        case "d":
+          backEndPlayers[socket.id].x += SPEED;  
+          break;
+    }
   }
   })
 });
